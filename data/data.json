@@ -106,8 +106,8 @@
         },
         {
             "serial": "OBJ_009",
-            "type": "Digital_C02",
-            "description": "Capteur de mesure du C02 de la salle de cours du Campus de Chambéry",
+            "type": "Digital_CO2",
+            "description": "Capteur de mesure du CO2 de la salle de cours du Campus de Chambéry",
             "location": "45.644065, 5.867810",
             "refresh": 60,
             "status": true,

@@ -54,7 +54,7 @@ function donnees(){
   * Cette liste sera contenu dans la clé communication
   */
 function comms(){
-    return {"communication":[]};
+    return {"communication":data.communication};
 }
 
 
@@ -67,7 +67,9 @@ function comms(){
   * Cette liste sera contenue dans la clé objects
   */
 function objects(){
-    return {"objects":[]};
+    var obj = {"objects": data.objects };
+    console.log(obj);
+    return obj;
 }
 
  /**
@@ -79,7 +81,14 @@ function objects(){
   * Cette liste sera contenu dans la clé types
   */
 function types(){
-    return undefined;
+    var obj = data.types;
+    var type = [];
+    for (var p in obj) {
+        type.push(obj[p]);
+    }
+    console.log(type);
+    return { "types": type };
+
 }
 
 /**
@@ -91,7 +100,12 @@ function types(){
  * Cette liste sera contenu dans la clé formats.
  */
 function formats(){
-   return undefined;
+    var obj = data.data_formats;
+    var tabFormat = [];
+    for (var p in obj) {
+        tabFormat.push(obj[p]);
+    }
+   return {"format": tabFormat};
 }
 
  /**
