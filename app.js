@@ -18,7 +18,7 @@ let data = JSON.parse(rawfile);
   * une chaîne de caractères.
   */
 function demarrage(){
-    return "";
+    return "bonjour, hello world, ça va bien ?";
 }
 
  /**
@@ -28,7 +28,11 @@ function demarrage(){
   * Elle retourne un objet javascript au format json.
   */
 function home(){
-    return undefined;
+    var mavoiture = {};
+    mavoiture.name="Corolla";
+    return mavoiture;
+    
+    
 }
 
  /**
