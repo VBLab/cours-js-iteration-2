@@ -101,11 +101,12 @@ function types(){
  */
 function formats(){
     var obj = data.data_formats;
-    var tabFormat = [];
+    var tab = [];
     for (var p in obj) {
-        tabFormat.push(obj[p]);
+        tab.push(obj[p]);
     }
-   return {"format": tabFormat};
+    console.log(tab);
+   return {"formats": tab};
 }
 
  /**
@@ -117,7 +118,13 @@ function formats(){
   * Cette liste sera contenue dans la clé objects
   */
 function objects_serials(){
-    return {"objects":[]};
+    var obj = data.objects;
+    var tab = [];
+    for (var p in obj) {
+        tab.push(obj[p].serial);
+        console.log(obj[p].serial);
+    }
+    return {"objects": tab};
 }
 
 /**
@@ -128,6 +135,7 @@ function objects_serials(){
  * l'objet ayant le serial passé en paramètre.
  */
 function get_object_by_serial(serial){
+    var obj = {"data.objects".serial}
     return serial;
 }
 
