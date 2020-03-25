@@ -116,9 +116,9 @@ function formats(){
   * Cette liste sera contenue dans la clé objects
   */
 function objects_serials(){
-    var obj = data.objects;
-    var tab = [];
-    for (var p in obj) {
+    let obj = data.objects;
+    let tab = [];
+    for (let p in obj) {
         tab.push(obj[p].serial);
         //console.log(obj[p].serial);
     }
@@ -150,13 +150,20 @@ function get_object_by_serial(serial){
  * liste des objets ayant l'opérateur passé en paramètre.
  */
 function get_objects_by_operator(operator){
-    let obj = data.objects;
-    for (i=0; i<obj.length;i++){
-    if (obj[i].provisionning.operator==operator){
-        return obj[i];
+   let obj = data.objects;
+   let tab = [];
+      for (i=0; i<obj.length;i++){
+          if (obj[i].provisionning.operator === operator){
+            tab.push(obj[i]);
+          }
+            
     }
-   // return operator;
-}
+    if (tab.length==0){
+        return undefined;
+    }
+  
+    return {"objects" : tab}; 
+   
 }
 
 /**
@@ -167,8 +174,24 @@ function get_objects_by_operator(operator){
  * ayant pour mode de communication celui passé en paramètre.
  */
 function get_types_by_comm(comm){
-    return comm;
+    let obj = data.types;
+    let tab = [];
+       for (k in obj)
+       {
+            if (obj[k].communication == comm){
+             tab.push(obj[k].communication);
+           }
+             
+       }
+            if (tab.length==0){
+            return undefined;
 }
+   console.log(tab);
+     return {"types" : tab}; 
+    
+ }
+    //return comm;
+
 
 /**
  * Cette fonction est exécutée lorsqu'on demande l'adresse
