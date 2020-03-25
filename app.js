@@ -30,9 +30,7 @@ function demarrage(){
 function home(){
     var mavoiture = {};
     mavoiture.name="Corolla";
-    return mavoiture;
-    
-    
+    return mavoiture; 
 }
 
  /**
@@ -68,7 +66,7 @@ function comms(){
   */
 function objects(){
     var obj = {"objects": data.objects };
-    console.log(obj);
+    //console.log(obj);
     return obj;
 }
 
@@ -86,7 +84,7 @@ function types(){
     for (var p in obj) {
         type.push(obj[p]);
     }
-    console.log(type);
+    //console.log(type);
     return { "types": type };
 
 }
@@ -105,7 +103,7 @@ function formats(){
     for (var p in obj) {
         tab.push(obj[p]);
     }
-    console.log(tab);
+    //console.log(tab);
    return {"formats": tab};
 }
 
@@ -122,9 +120,9 @@ function objects_serials(){
     var tab = [];
     for (var p in obj) {
         tab.push(obj[p].serial);
-        console.log(obj[p].serial);
+        //console.log(obj[p].serial);
     }
-    return {"objects": tab};
+    return {"objects" : tab};
 }
 
 /**
@@ -135,8 +133,13 @@ function objects_serials(){
  * l'objet ayant le serial passé en paramètre.
  */
 function get_object_by_serial(serial){
-    var obj = {"data.objects".serial}
-    return serial;
+    let obj = data.objects;
+    for (i=0; i<obj.length;i++){
+    if (obj[i].serial==serial){
+        return obj[i];
+    }
+    //return undefined;
+}
 }
 
 /**
@@ -147,7 +150,13 @@ function get_object_by_serial(serial){
  * liste des objets ayant l'opérateur passé en paramètre.
  */
 function get_objects_by_operator(operator){
-    return operator;
+    let obj = data.objects;
+    for (i=0; i<obj.length;i++){
+    if (obj[i].provisionning.operator==operator){
+        return obj[i];
+    }
+   // return operator;
+}
 }
 
 /**

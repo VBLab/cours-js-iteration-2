@@ -101,6 +101,7 @@ test('la fonction formats retourne un objet json contenant une liste des formats
     assert.equal(d.formats.length, 12);
 });
 
+
 test('la fonction objects_serials renvoie une liste avec les serials de tous les objets',()=>{
     const d = app.objects_serials();
     assert.notEqual(d, undefined);
