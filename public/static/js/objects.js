@@ -13,3 +13,16 @@ function load_components(){
     // Ajouter ici le code permettant de charger dynamiquement les éléments de la page
 });
 }
+function add_line_to_table() {
+let line = '<tr>\
+<th> OBJ_001 </th>\
+<td><image</td>\
+<td>description</td>\
+<td><input type="radio"></td>\
+<th style="width: 100px"><button class="btn-primary">Achetez moi !</button></th>\
+</tr>';
+
+document.getElementById('table_body').innerHTML +- line ;
+
+}
+// $('#table_body').append(line); // jquerry
