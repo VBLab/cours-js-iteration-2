@@ -8,6 +8,8 @@
 function load_components(){
     
     console.log("Chargement des données de la page");
+    $.get("/objects", function(data, status) {
+        console.log(data);
     // Ajouter ici le code permettant de charger dynamiquement les éléments de la page
+});
 }
-load_components();
