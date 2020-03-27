@@ -17,7 +17,7 @@ function load_components() {
     });
 }
 
-// function add_line_to_table() {
+// function add_line_to_table() {                           //ajout d'un seul objet (001)
 // let line = '<tr>\
 // <th> OBJ_001 </th>\
 // <td><image</td>\
@@ -30,18 +30,25 @@ function load_components() {
 
 
 //}
-// $('#table_body').append(line); // jquerry
+// $('#table_body').append(line);                   // jquerry
 
-function add_line_to_table(data) {               /// Modif add_line /ajout les données d'un objet à la ligne
+
+
+function add_line_to_table(data) {
+    let checked = "";
+    if (data.status) {
+        checked = "checked";
+    } else {
+        checked = "";
+    }                                  /// Modif add_line /ajout les données d'un objet à la ligne
     let line = '<tr>\
     <th> '+ data.serial + ' </th>\
     <th><img style="max-width: 70%; height: 10%;"src="/static/images/'+ data.image + '"></th>\
     <th>'+ data.description + '</th>\
-    <th><input type="radio"></th>\
+    <th><input type="checkbox" '+checked+'></th>\
     <th style="width: 100px"><button class="btn-primary">Achetez moi !</button></th>\
     </tr>';
 
     document.getElementById('table_body').innerHTML += line;
 
 }
-
