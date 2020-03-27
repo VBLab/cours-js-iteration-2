@@ -5,7 +5,7 @@
  *    - charger la liste des objets depuis l'API
  *    - charger les données des objets dans la table
  */
-function load_components() {
+function load_components() { // chargement de toutes les données de la table
 
     console.log("Chargement des données de la page");
     $.get("/objects", function (data) {
@@ -32,7 +32,13 @@ function load_components() {
 //}
 // $('#table_body').append(line);                   // jquerry
 
-
+function refresh(){
+    //1- vider la table
+    document.getElementById('table_body').innerHTML="";
+    load_components();
+    console.log(document.getElementById('table_body').innserHTML);
+    //2 -remplir la table => on sait déjà faire...cf load_components
+}
 
 function add_line_to_table(data) {
     let checked = "";
@@ -43,7 +49,7 @@ function add_line_to_table(data) {
     }                                  /// Modif add_line /ajout les données d'un objet à la ligne
     let line = '<tr>\
     <th> '+ data.serial + ' </th>\
-    <th><img style="max-width: 70%; height: 10%;"src="/static/images/'+ data.image + '"></th>\
+    <th style="width:500px;"><img style="width:500px; heigth:10%; text-align:center;" src=" static/images/' + data.image + '"></th> \
     <th>'+ data.description + '</th>\
     <th><input type="checkbox" '+checked+'></th>\
     <th style="width: 100px"><button class="btn-primary">Achetez moi !</button></th>\
