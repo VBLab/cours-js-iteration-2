@@ -9,13 +9,14 @@ function load_components() { // chargement de toutes les données de la table
 
     console.log("Chargement des données de la page");
     $.get("/objects", function (data) {
-        for (let p of data.objects) {
-            add_line_to_table(p);
+        for (let i of data.objects) {
+            add_line_to_table(i);
         }
         //console.log(p);
         // Ajouter ici le code permettant de charger dynamiquement les éléments de la page
     });
 }
+
 
 // function add_line_to_table() {                           //ajout d'un seul objet (001)
 // let line = '<tr>\
@@ -40,15 +41,32 @@ function refresh(){
     //2 -remplir la table => on sait déjà faire...cf load_components
 }
 
-function add_line_to_table(data) {
+function add_line_to_table(data){
+    if (!data.image)
+    {
+    load_default_image(data);
+}
     let checked = "";
     if (data.status) {
         checked = "checked";
     } else {
         checked = "";
-    }                                  /// Modif add_line /ajout les données d'un objet à la ligne
+    }                                  
+    
+    // A faire pour remplir la ligne :
+//      * 1. tester si l'image est présente
+//      * 2. si l'image n'existe pas, appeler la fonction load_default_image
+//      * 3. créer une fonction load_default_image
+//      * 4. appelez l'API pour récupérer le type de l'objet contenant default_image
+//      * 5. retrouvez l'élément contenant l'image
+//      * 6. mettez à jour l'image avec default_image
+  
+
+    
+
+
     let line = '<tr>\
-    <th> '+ data.serial + ' </th>\
+    <th>'+ data.serial + '</th>\
     <th style="width:500px;"><img style="width:500px; heigth:10%; text-align:center;" src=" static/images/' + data.image + '"></th> \
     <th>'+ data.description + '</th>\
     <th><input type="checkbox" '+checked+'></th>\
@@ -57,4 +75,18 @@ function add_line_to_table(data) {
 
     document.getElementById('table_body').innerHTML += line;
 
+}
+function load_default_image (data_objects) {
+    $.get("/data",function (data){
+        console.log(data);
+    for (let p of document.getElementById('table_body').childNodes) {
+                if (p.nodeName == 'TR') {
+                    console.log(data.types[data_objects.type].default_image);
+                    if (p.childNodes[1].childNodes[0].textContent == data_objects.serial) {
+                        p.childNodes[3].childNodes[0].setAttribute('src', '/static/images/' + data.types[data_objects.type].default_image);;
+                    }
+                }
+            }
+
+   });
 }
