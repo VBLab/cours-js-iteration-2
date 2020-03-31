@@ -90,3 +90,4 @@ function load_default_image (data_objects) {
 
    });
 }
+
